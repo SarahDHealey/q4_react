@@ -21,9 +21,10 @@ new WebpackDevServer(webpack(config), {
       chunks: false,
       chunkModules: false
     }
-}).listen(process.env.PORT || 3000, function (err) {
+}).listen(3000, 'localhost', function (err) {
     if (err) {
         console.log(err);
-    }  
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env)
+    }
+
+  console.log('Listening at localhost:3000');
 });

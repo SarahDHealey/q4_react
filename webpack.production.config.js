@@ -49,10 +49,8 @@ module.exports = {
         }),
         // plugin for passing in data to the js, like what NODE_ENV we are in.
         new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify('production'),
-                'API_HOST': 'https://afternoon-forest-30184.herokuapp.com'
-      }
+            'process.env.NODE_ENV': JSON.stringify('production')
+        })
     ],
 
     // ESLint options
