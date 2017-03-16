@@ -23,12 +23,18 @@ module.exports = {
           inject: 'body',
           filename: 'index.html'
         }),
+        new HtmlWebpackPlugin({
+            title: 'HtmlWebpackPlugin example',
+            favicon: 'favicon.ico',
+            filename: 'favicon.html'
+        }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('development')
-        })
+        }),
+        new ExtractTextPlugin('styles.css')
     ],
     eslint: {
         configFile: '.eslintrc',
@@ -40,7 +46,6 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                exclude: /\/favicon.ico$/,
                 loader: 'eslint'
             }
         ],
@@ -50,6 +55,14 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel'
             },
+            { 
+                test: /\.css$/, 
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader') 
+            },
+            { 
+                test: /\.png$/, 
+                loader: 'file-loader' 
+            },
             {
                 test: /\.json?$/,
                 loader: 'json'
@@ -58,8 +71,14 @@ module.exports = {
                 test: /\.scss$/,
                 loader: 'style!css?modules&localIdentName=[name]---[local]---[hash:base64:5]!sass'
             },
-            { test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-            { test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/, loader: 'file' }
+            { 
+                test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, 
+                loader: 'url?limit=10000&mimetype=application/font-woff' 
+            },
+            { 
+                test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/, 
+                loader: 'file' 
+            }
         ]
     }
 };
