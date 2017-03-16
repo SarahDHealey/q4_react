@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "start": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors",
+    "start": "node ./server/",
+    "build": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
   },
   "keywords": [
@@ -52,8 +53,8 @@
     "stats-webpack-plugin": "^0.3.1",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "1.13.0",
+    "webpack-dev-server": "1.14.1"
   },
    "engines": {
   "node": "6.5.0",
