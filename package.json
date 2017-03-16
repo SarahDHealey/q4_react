@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    // "start": "node ./server/",
     "start": "rimraf dist && webpack --config ./webpack.production.config.js --progress --profile --colors",
     "eslint": "eslint ."
   },
